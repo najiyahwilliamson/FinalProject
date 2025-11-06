@@ -1,0 +1,63 @@
+---
+title: "Final Project Spells"
+author: "Najiyah Williamson"
+date: "2025-09-29"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+library(here)
+library(dplyr)
+library(kableExtra)
+
+opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+# Introduction
+
+For this analysis, I will be working with the Spell subset of the Harry Potter Movies dataset, sourced from Kaggle. This subset contains 61 spells featured across the Harry Potter films, with detailed attributes including the spell name, incantation, effect, and the color of light produced during its use.
+
+Given that all columns contain categorical data, my analysis will focus on descriptive and comparative techniques suitable for qualitative variables. Specifically, I plan to:
+
+* Explore frequency distributions of spell types (e.g., charms, curses, jinxes) based on the Spell.Name column, using bar plots and proportion tables to highlight dominant categories.
+* Investigate associations between spell type and light color using contingency tables and chi-square tests of independence to assess whether certain categories of spells tend to produce specific colors.
+
+
+```{r, loading-data, echo = TRUE}
+here::i_am("FinalProjectSpells.Rmd")
+```
+
+# Frequency of Spell Type
+
+```{r load_in_freq_cat}
+freq_cat <- readRDS(here::here("output", "freq_cat.rds"))
+```
+
+```{r table_1}
+kable(freq_cat, caption = "Frequency of Spell Categories", align = "c") %>% kable_styling(position = "center", full_width = FALSE)
+```
+Charms are by far the most common type of spell in this dataset, with 32 occurrences. “Other” spells come next with 10, followed by Curses (8), Jinxes (5), and Transfiguration and Conjuring spells (4). Healing spells are the least frequent, appearing only twice. This is somewhat surprising given the frequent injuries seen in the movies, but it may reflect that potions and other non-spell methods are primarily used for healing rather than magical spells.
+
+```{r spell-plot, fig.align='center', echo=FALSE} 
+knitr::include_graphics(here::here("output", "spell_plot.png"))
+```
+
+The figure illustrates the distribution of spell categories in the dataset. Charms dominate the dataset, followed by a smaller number of “Other” spells, Curses, Jinxes, and Transfiguration and Conjuring spells. Healing spells are the least frequent category, appearing only rarely.
+
+# Spell Type and Color
+```{r echo=FALSE, results='asis'}
+cat(readLines(here::here("output", "color_summary_table.html")), sep = "\n")
+```
+
+This summarizes the 40 spells in the dataset that have an associated light color. Overall, Blue and White are the most frequently occurring colors, each appearing 7 times, followed by Green and Red, each appearing 4 times. Purple occurs 3 times, Haze, Icy Blue, and Silver appear twice each, and the remaining colors—Black smoke, Bright Yellow, Crystal Clear, Fiery Orange, Gold, Light Green, Orange, Scarlet, and Turquoise—appear only once.
+
+Each row lists the spells that produce the given color along with their incantations, providing a detailed look at the types of magic associated with each hue. For example, Blue includes spells like Alohomora (Unlocking Charm) and Portus, while White encompasses spells such as Lumos Maxima (Wand-Lighting Charm) and Protego Maxima. This table highlights that certain colors, particularly Blue and White, are more common in the magical light effects of spells, whereas many colors are unique to a single spell.
+
+```{r spell-color-distribution, fig.align='center', echo=FALSE}
+knitr::include_graphics(here::here("output", "spell_color_distribution.png"))
+```
+
+The figure shows the distribution of light colors produced by different spell types. Charms are the most common spell type and produce a wide variety of colors, with blue and white being among the most frequent. Other spell types, such as Curses, Jinxes, Healing, Transfiguration, and “Other” spells, show more limited color distributions.
+
+A chi-square test of independence was conducted to assess whether the distribution of colors emitted from wands differs by spell type. The test results (X-squared = 63.428, df = 80, p-value = 0.913) indicate no statistically significant association between spell type and color emitted. This suggests that, in this dataset, emitted color is generally independent of the type of spell cast, even though some spell types appear more frequently overall.
