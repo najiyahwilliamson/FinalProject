@@ -1,2 +1,0 @@
-"0","kable(freq_cat, caption = ""Frequency of Spell Categories"", align = ""c"") %>%"
-"0","  kable_styling(position = ""center"", full_width = FALSE) #Formatting to make a table in HTML report"
