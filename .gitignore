@@ -1,10 +1,8 @@
-*
-!.gitignore
-!Makefile
-!README.md
-!FinalProjectSpells.Rmd
-!code/
-!code/**
-!output/
-!output/.gitkeep
-!Spells.csv
+# Ignore output and report files
+*.html
+*.pdf
+*.docx
+
+# Ignore RStudio project metadata
+.Rproj.user/
+
