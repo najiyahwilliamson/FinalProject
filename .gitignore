@@ -1,0 +1,9 @@
+*
+!.gitignore
+!Makefile
+!README.md
+!FinalProjectSpells.Rmd
+!code/
+!code/**
+!output/
+!output/.gitkeep
