@@ -41,7 +41,9 @@ The following code can be found under the code/ folder. Files with .rds, tables,
 
 # Final Document
 
-The FinalProjectSpells.Rmd will be the report produced by the 5 Rscript files located in the code folder. To build this report, run the Makefile in this repository.
+The FinalProjectSpells.Rmd will be the report produced by the 5 Rscript files located in the code folder. To build this report, run the Makefile in this repository. 
+To synchronize the project's package library with the versions recorded in renv.lock, be sure to type "make restore" into the bash terminal.
+This uses renv::restore() to install the required packages and ensure your own environment matches the project configuration.
 
 `FinalProjectSpells.Rmd`  
 - read data, tables, and figures from `output/` folder  

@@ -16,3 +16,7 @@ make_output4: make_output1
 .PHONY: clean
 clean:
 	rm -f output/*.rds output/*.html output/*.png && rm -f report.html
+	
+.PHONY: install
+install:
+	Rscript -e "renv::restore(prompt = FALSE)"
