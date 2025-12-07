@@ -43,7 +43,7 @@ The following code can be found under the code/ folder. Files with .rds, tables,
 
 The FinalProjectSpells.Rmd will be the report produced by the 5 Rscript files located in the code folder. To build this report, run the Makefile in this repository. To **synchronize** the project's package library with the versions recorded in renv.lock, run:
 
-make install
+`make install`
 
 This uses renv::restore() to install the required packages and ensure your environment matches the project configuration. **Note that this step only restores packages; to build the report or other outputs, run make.**
 
@@ -53,7 +53,9 @@ This uses renv::restore() to install the required packages and ensure your envir
 - compile final report for submission
 
 # Docker 
-To build the image: docker build -t najiyahwilliamson/finalprojectspells:latest .
+To build the image: `docker build -t najiyahwilliamson/finalprojectspells:latest .`
+
+Instructions for running the automated version of the image: `docker run --rm -v "$(pwd)/report:/project/report" najiyahwilliamson/finalprojectspells:latest`
+
 Link to the image on DockerHub: https://hub.docker.com/r/najiyahwilliamson/finalprojectspells
 
-Instructions for running the automated version of the image: docker run --rm -v "$(pwd)/report:/project/report" najiyahwilliamson/finalprojectspells:latest
