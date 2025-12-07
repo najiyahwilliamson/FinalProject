@@ -51,3 +51,9 @@ This uses renv::restore() to install the required packages and ensure your envir
 - read data, tables, and figures from `output/` folder\
 - display frequency table and both figures\
 - compile final report for submission
+
+# Docker 
+To build the image: docker build -t najiyahwilliamson/finalprojectspells:latest .
+Link to the image on DockerHub: https://hub.docker.com/r/najiyahwilliamson/finalprojectspells
+
+Instructions for running the automated version of the image: docker run --rm -v "$(pwd)/report:/project/report" najiyahwilliamson/finalprojectspells:latest

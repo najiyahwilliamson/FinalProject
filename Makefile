@@ -13,6 +13,12 @@ make_output3: make_output1
 make_output4: make_output1
 	Rscript code/04_make_output4.R
 
+docker_report:
+	docker run --rm \
+		-v "$(PWD)/report:/project/report" \
+		-v "$(PWD)/output:/project/output" \
+		finalprojectspells
+
 .PHONY: clean
 clean:
 	rm -f output/*.rds output/*.html output/*.png && rm -f report.html
