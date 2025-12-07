@@ -54,8 +54,10 @@ This uses renv::restore() to install the required packages and ensure your envir
 
 # Docker 
 To build the image: `docker build -t najiyahwilliamson/finalprojectspells:latest .`
+  *Replace `najiyahwilliamson` with your DockerHub username
 
 Instructions for running the automated version of the image: `docker run --rm -v "$(pwd)/report:/project/report" najiyahwilliamson/finalprojectspells:latest`
-
+  *This runs Docker container and generates the report
+  
 Link to the image on DockerHub: https://hub.docker.com/r/najiyahwilliamson/finalprojectspells
 
